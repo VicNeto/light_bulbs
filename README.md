@@ -1,12 +1,11 @@
-# light_bulbs
+# Distribución de bombillos
 
 # Instalación
 
 ## Clonar el repositorio
 
 ## Crear ambiente virtual
-- Crear un ambiente virtual para evitar un posible conflicto con versiones de los paquetes previamente instaldas.
-
+Crear un ambiente virtual para evitar un posible conflicto con versiones de los paquetes previamente instaladas.
 En entornos unix se puede crear un ambiente virtual usando virtualenv fácilmente.
 
 - virtualenv env
@@ -23,7 +22,7 @@ Instalados los requerimientos, simplemente correr el archivo app.py, esto inicia
 
 - python app.py
 
-## Revisar respuesta
+# Revisar respuesta
 Abrir un navegador e ir a la dirección http://localhost:5000
 
 # Cambiar la matriz
