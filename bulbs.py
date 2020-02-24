@@ -35,17 +35,33 @@ def try_dispostions(room):
     return (best_room, min_bulbs)
 
 
+def check_cross(room):
+    r = room.get_room()
+    current_bulbs = 0
+    cross_items = ((-1,0), (1,0), (0,-1), (0,1))
+    x_items = ((-1,-1), (-1,1), (1,1), (1,-1))
+    xr_items = ((-1,1), (1,1), (1,-1), (-1,-1))
+
+    for i in range(1, len(r) - 1):
+        for j in range(1, len(r[0]) - 1):
+            if all([r[i+add[0]][j+add[1]] == 0 for add in cross_items]) and any([ r[i+it[0]][j+it[1]] == 1 and r[i+it2[0]][j+it2[1]] == 1 for it,it2 in zip(x_items, xr_items)]):
+                room.set_bulb(i,j)
+                current_bulbs += 1
+    return current_bulbs
+
+
 def solve_minimum_bulbs():
     room = Room()
 
     with open('room.txt', 'r') as reader:
         room.load_room_from_file(reader)
+        bulbs = check_cross(room)
         solution, n_solution = try_dispostions(room)
-        
+
         for i in solution:
             print(i)
         print(n_solution)
 
-        return (solution, n_solution)
+        return (solution, n_solution + bulbs)
     
     return None
